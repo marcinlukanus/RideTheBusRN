@@ -14,11 +14,13 @@ import {
   ScrollView,
   View,
   Text,
+  Image,
   TouchableOpacity,
   StatusBar,
 } from 'react-native';
 
 import Header from './components/Header';
+import PlayingCard from './components/PlayingCard';
 
 const App: () => React$Node = () => {
   return (
@@ -26,6 +28,7 @@ const App: () => React$Node = () => {
       <StatusBar barStyle="dark-content" />
       <View style={styles.container}>
 		<Header />
+	
 		<View style={styles.buttons}>
 			<TouchableOpacity style={styles.drawCardsButton}>
 				<Text style={styles.buttonText}>Draw Cards</Text>
@@ -33,6 +36,13 @@ const App: () => React$Node = () => {
 			<TouchableOpacity style={styles.rulesButton}>
 				<Text style={styles.buttonText}>Rules</Text>
 			</TouchableOpacity>
+		</View>
+
+		<View style={styles.cards}>
+			<PlayingCard />
+			<PlayingCard />
+			<PlayingCard />
+			<PlayingCard />
 		</View>
 	  </View>
 	</>
@@ -43,6 +53,11 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: '#22303f',
+	},
+	cards: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	buttons: {
 		flexDirection: 'row',
@@ -63,7 +78,11 @@ const styles = StyleSheet.create({
 	},
 	buttonText: {
 		color: 'white'
-	}
+	},
+	logo: {
+		width: 66,
+		height: 58,
+	  },
 });
 
 export default App;
