@@ -21,6 +21,7 @@ import {
 
 import Header from './components/Header';
 import PlayingCard from './components/PlayingCard';
+import helpers from './helpers';
 
 const App: () => React$Node = () => {
   return (
@@ -30,11 +31,20 @@ const App: () => React$Node = () => {
 		<Header />
 	
 		<View style={styles.buttons}>
-			<TouchableOpacity style={styles.drawCardsButton}>
-				<Text style={styles.buttonText}>Draw Cards</Text>
+			<TouchableOpacity 
+				style={styles.drawCardsButton}
+			>
+				<Text style={styles.buttonText}>
+					Draw Cards
+				</Text>
 			</TouchableOpacity>
-			<TouchableOpacity style={styles.rulesButton}>
-				<Text style={styles.buttonText}>Rules</Text>
+			<TouchableOpacity 
+				onPress={ () => helpers.rules() }
+				style={styles.rulesButton}
+			>
+				<Text style={styles.buttonText}>
+					Rules
+				</Text>
 			</TouchableOpacity>
 		</View>
 
