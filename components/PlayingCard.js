@@ -1,15 +1,20 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import helpers from '../helpers';
 
-const PlayingCard = () => {
+const PlayingCard = ({ cardNum }) => {
     return (
-        <View >
-            <Image 
-                style={styles.playingCard}
-                source={{ 
-                    uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Card_back_06.svg/209px-Card_back_06.svg.png'
-                }} 
-            />
+        <View>
+            <TouchableWithoutFeedback
+                onPress={ () => helpers.flipCard(cardNum) }
+            >
+                <Image 
+                    style={styles.playingCard}
+                    source={{ 
+                        uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Card_back_06.svg/209px-Card_back_06.svg.png'
+                    }} 
+                />
+            </TouchableWithoutFeedback>
         </View>
     );
 };
