@@ -23,7 +23,7 @@ import Header from './components/Header';
 import PlayingCard from './components/PlayingCard';
 import helpers from './helpers';
 
-const App: () => React$Node = () => {
+const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -32,6 +32,7 @@ const App: () => React$Node = () => {
 	
 		<View style={styles.buttons}>
 			<TouchableOpacity 
+				onPress={ () => helpers.startGame() }
 				style={styles.drawCardsButton}
 			>
 				<Text style={styles.buttonText}>
@@ -49,10 +50,10 @@ const App: () => React$Node = () => {
 		</View>
 
 		<View style={styles.cards}>
-			<PlayingCard />
-			<PlayingCard />
-			<PlayingCard />
-			<PlayingCard />
+			<PlayingCard cardNum={1} />
+			<PlayingCard cardNum={2} />
+			<PlayingCard cardNum={3} />
+			<PlayingCard cardNum={4} />
 		</View>
 	  </View>
 	</>
