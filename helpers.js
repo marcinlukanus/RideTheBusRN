@@ -46,7 +46,7 @@ const helpers = {
       axios
         .get('https://deckofcardsapi.com/api/deck/new/draw/?count=4')
         .then(response => {
-          Alert.alert('TODO', response.data);
+          Alert.alert('Cards', JSON.stringify(response.data.cards));
         })
         .catch(error => {
           console.log(error)
