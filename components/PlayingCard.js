@@ -1,22 +1,36 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableWithoutFeedback } from 'react-native';
-import helpers from '../helpers';
+import { 
+    View,
+    Image,
+    StyleSheet,
+    TouchableWithoutFeedback 
+} from 'react-native';
 
-const PlayingCard = ({ cardNum }) => {
-    return (
-        <View>
-            <TouchableWithoutFeedback
-                onPress={ () => helpers.flipCard(cardNum) }
-            >
-                <Image 
-                    style={styles.playingCard}
-                    source={{ 
-                        uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Card_back_06.svg/209px-Card_back_06.svg.png'
-                    }} 
-                />
-            </TouchableWithoutFeedback>
-        </View>
-    );
+class PlayingCard extends React.Component {
+    render() {
+        let { cardState, onCardPressed } = this.props
+        let { isFlipped, image } = cardState
+
+        let imageUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Card_back_06.svg/209px-Card_back_06.svg.png'
+        if(isFlipped)
+            imageUrl = image
+
+        return (
+            <View>
+                <TouchableWithoutFeedback
+                    onPress={onCardPressed}
+                >
+                    <Image 
+                        style={styles.playingCard}
+                        source={{ 
+                            uri: imageUrl
+                        }} 
+                        resizeMode={'contain'}
+                    />
+                </TouchableWithoutFeedback>
+            </View>
+        );
+    }
 };
 
 const styles = StyleSheet.create({
