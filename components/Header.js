@@ -5,7 +5,7 @@ const Header = ({ title }) => {
     return (
         <View style={styles.header}>
             <Text style={styles.text}>{title}</Text>
-            <Text style={styles.subtext}>A single-player drinking game created by Marcin Lukanus.</Text>
+            <Text style={styles.subtext}>A single-player drinking game based on Irish Poker.</Text>
         </View>
     );
 };
