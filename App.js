@@ -38,7 +38,6 @@ class App extends React.Component {
 	getCards = () => {
 		helpers.startGame()
 			.then(response => {
-				console.log(response)
 				this.setState({
 					card1: {isFlipped: false, image: response[0].image},
 					card2: {isFlipped: false, image: response[1].image},
