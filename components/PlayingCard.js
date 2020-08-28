@@ -8,8 +8,10 @@ import {
 
 class PlayingCard extends React.Component {
     render() {
-        let { cardState, onCardPressed } = this.props
+        let { cardState, onCardPressed, width } = this.props
         let { isFlipped, image } = cardState
+        let height = width * (314 / 226)
+        let marginPadding = width * 0.2
 
         let imageUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Card_back_06.svg/209px-Card_back_06.svg.png'
         if(isFlipped)
@@ -21,7 +23,12 @@ class PlayingCard extends React.Component {
                     onPress={onCardPressed}
                 >
                     <Image 
-                        style={styles.playingCard}
+                        style={{
+                            width: width, 
+                            height: height,
+                            marginRight: marginPadding / 2,
+                            marginLeft: marginPadding / 2
+                        }}
                         source={{ 
                             uri: imageUrl
                         }} 
@@ -32,13 +39,5 @@ class PlayingCard extends React.Component {
         );
     }
 };
-
-const styles = StyleSheet.create({
-    playingCard: {
-        height: 200, 
-        width: 130,
-        marginRight: 20
-    },
-})
 
 export default PlayingCard;
