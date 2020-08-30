@@ -13,6 +13,7 @@ import {
   Text,
   TouchableOpacity,
   StatusBar,
+  Dimensions,
 } from 'react-native';
 
 import Header from './components/Header';
@@ -29,7 +30,18 @@ class App extends React.Component {
 
 	constructor(props) {
 		super(props)
+
+		Dimensions.addEventListener('change', () => {
+			this.setState({
+				orientation: this.isPortrait() ? 'portrait' : 'landscape'
+			});
+		});
 	}
+
+	isPortrait = () => {
+		const dim = Dimensions.get('screen');
+		return dim.height >= dim.width;
+	};
 
 	componentDidMount() {
 		this.getCards()
@@ -62,6 +74,8 @@ class App extends React.Component {
 
 	render() {
 		let { card1, card2, card3, card4 } = this.state
+		
+		const windowWidth = Dimensions.get('window').width;
 
 		return (
 			<>
@@ -89,10 +103,26 @@ class App extends React.Component {
 				</View>
 
 				<View style={styles.cards}>
-					<PlayingCard cardState={card1} onCardPressed={() => this.onCardPressed(1)} />
-					<PlayingCard cardState={card2} onCardPressed={() => this.onCardPressed(2)} />
-					<PlayingCard cardState={card3} onCardPressed={() => this.onCardPressed(3)} />
-					<PlayingCard cardState={card4} onCardPressed={() => this.onCardPressed(4)} />
+					<PlayingCard 
+						cardState={card1} 
+						onCardPressed={() => this.onCardPressed(1)}
+						width={windowWidth / 5}
+					/>
+					<PlayingCard 
+						cardState={card2} 
+						onCardPressed={() => this.onCardPressed(2)} 
+						width={windowWidth / 5}
+					/>
+					<PlayingCard 
+						cardState={card3} 
+						onCardPressed={() => this.onCardPressed(3)}
+						width={windowWidth / 5}
+					/>
+					<PlayingCard 
+						cardState={card4} 
+						onCardPressed={() => this.onCardPressed(4)}
+						width={windowWidth / 5}
+					/>
 				</View>
 			</View>
 			</>
